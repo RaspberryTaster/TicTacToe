@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://7xdbueiotapi"]
+
+[ext_resource type="Script" path="res://Scenes/player/player.gd" id="1_gje1s"]
+[ext_resource type="Texture2D" uid="uid://rvm7ah2sojp0" path="res://Sprites/GamePieces/blueCircle.png" id="2_ipiwo"]
+
+[node name="Player" type="Node"]
+script = ExtResource("1_gje1s")
+marker = ExtResource("2_ipiwo")

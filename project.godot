@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TicTacToe"
+config/description="Project Overview:
+This project is a digital implementation of the classic Tic-Tac-Toe game, enhanced with an AI opponent using the minimax algorithm. The goal is to create a game that provides a challenging and engaging experience through an intelligent and unbeatable computer opponent.
+
+Features:
+
+Classic Tic-Tac-Toe Gameplay:
+
+A 3x3 grid where two players take turns marking spaces with X and O.
+The objective is to get three of your marks in a row, column, or diagonal.
+Minimax Algorithm for AI:
+
+The AI uses the minimax algorithm to evaluate all possible moves.
+It ensures optimal play by minimizing the possible loss in a worst-case scenario.
+The AI will either win or draw, providing a challenging opponent for players.
+User Interface:
+
+Clean and simple design for easy interaction.
+Visual indicators for player turns and game status (win, lose, draw)."
+run/main_scene="res://Scenes/main.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.109804, 0.105882, 0.168627, 1)
+config/icon="res://Sprites/Icons/artificial-intelligence (2).png"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.109804, 0.105882, 0.168627, 1)

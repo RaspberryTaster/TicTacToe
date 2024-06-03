@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dc57yqxit7ae0"]
+
+[ext_resource type="Script" path="res://Scenes/grid_button/grid_button.gd" id="1_c286x"]
+[ext_resource type="Texture2D" uid="uid://rvm7ah2sojp0" path="res://Sprites/GamePieces/blueCircle.png" id="1_i7swn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uda63"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2yaa"]
+bg_color = Color(0.6, 0.6, 0.6, 0.454902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywrd4"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.521569)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yd4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sjmd"]
+
+[node name="GridButton" type="ColorRect"]
+custom_minimum_size = Vector2(80, 80)
+script = ExtResource("1_c286x")
+
+[node name="Icon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i7swn")
+expand_mode = 4
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uda63")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f2yaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ywrd4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5yd4v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7sjmd")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7mq7176tv0q4"]
+
+[ext_resource type="PackedScene" uid="uid://dc57yqxit7ae0" path="res://Scenes/grid_button/grid_button.tscn" id="1_2ivmb"]
+[ext_resource type="Script" path="res://Scenes/main/main.gd" id="1_yibyy"]
+[ext_resource type="Script" path="res://Scenes/human_player/HumanPlayer.gd" id="2_2ll4f"]
+[ext_resource type="PackedScene" uid="uid://7xdbueiotapi" path="res://Scenes/player/player.tscn" id="2_mtqy7"]
+[ext_resource type="Script" path="res://Scenes/human_input/HumanInput.gd" id="4_1f1bi"]
+[ext_resource type="Script" path="res://Scenes/computer_input/ComputerInput.gd" id="4_ytlvx"]
+[ext_resource type="Texture2D" uid="uid://bip87nx7hgr2h" path="res://Sprites/GamePieces/red_X.png" id="5_hifp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgsix"]
+bg_color = Color(1, 0.329412, 0.368627, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qxp8"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("players")]
+script = ExtResource("1_yibyy")
+players = [NodePath("HumanPlayer/HumanPlayer"), NodePath("ComputerPlayer/ComputerPlayer")]
+
+[node name="HumanPlayer" type="Node" parent="."]
+script = ExtResource("2_2ll4f")
+
+[node name="HumanPlayer" parent="HumanPlayer" instance=ExtResource("2_mtqy7")]
+
+[node name="HumanInput" type="Node" parent="HumanPlayer"]
+script = ExtResource("4_1f1bi")
+
+[node name="ComputerPlayer" type="Node" parent="."]
+
+[node name="ComputerPlayer" parent="ComputerPlayer" instance=ExtResource("2_mtqy7")]
+marker = ExtResource("5_hifp3")
+
+[node name="ComputerInput" type="Node" parent="ComputerPlayer" node_paths=PackedStringArray("humanPlayer", "computerPlayer")]
+script = ExtResource("4_ytlvx")
+humanPlayer = NodePath("../../HumanPlayer/HumanPlayer")
+computerPlayer = NodePath("../ComputerPlayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -124.0
+offset_right = 124.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="GridButton" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton2" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton3" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton4" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton5" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton6" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton7" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton8" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="GridButton9" parent="CanvasLayer/VBoxContainer/PanelContainer/GridContainer" instance=ExtResource("1_2ivmb")]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Computer Turn"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jgsix")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7qxp8")
+text = "Restart"
+
+[connection signal="on_make_move" from="HumanPlayer/HumanPlayer" to="HumanPlayer/HumanInput" method="_on_player_on_make_move"]
+[connection signal="on_move_made" from="HumanPlayer/HumanPlayer" to="HumanPlayer/HumanInput" method="_on_player_on_move_made"]
+[connection signal="on_make_move" from="ComputerPlayer/ComputerPlayer" to="ComputerPlayer/ComputerInput" method="_on_player_on_make_move"]
+[connection signal="on_move_made" from="ComputerPlayer/ComputerPlayer" to="ComputerPlayer/ComputerInput" method="_on_player_on_move_made"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
