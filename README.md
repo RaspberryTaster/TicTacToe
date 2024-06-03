@@ -1,7 +1,7 @@
 # TicTacToe
 
 ## Overview
-This is a simple TicTacToe game implemented in Godot. The game features a basic AI opponent using the Minimax algorithm, with plans to incorporate Alpha-Beta pruning for improved performance.
+This is a simple TicTacToe game implemented in Godot. The game features a basic AI opponent using the Minimax algorithm, uses alpha-beta pruning to improve the performance.
 
 ![TicTacToe Game](https://github.com/RaspberryTaster/TicTacToe/blob/main/NVIDIA_Share_qOZ8E9RTuR.gif)
 
@@ -10,7 +10,7 @@ This is a simple TicTacToe game implemented in Godot. The game features a basic 
 - Implemented AI using the Minimax algorithm
 
 ## To-Do List
-- [ ] Add Alpha-Beta pruning to the Minimax algorithm for optimization
+- [x] Add Alpha-Beta pruning to the Minimax algorithm for optimization
 
 
 ## Minimax Algorithm
