@@ -32,7 +32,7 @@ func  bestMove(state):
 		for y in range(3):
 			if state[x][y] == null:
 				state[x][y] = computerPlayer
-				var score = minimax(state,0,false)
+				var score = minimax(state,0,-INF,INF,false)
 				state[x][y] = null
 
 				if score > bestScore:
@@ -44,7 +44,7 @@ func  bestMove(state):
 
 var score = {"Winner": 1, "Loser":-1, "Draw":0}
 
-func minimax(state,depth,isMaximizing) -> int:
+func minimax(state,depth,alpha,beta,isMaximizing) -> int:
 	var result = $"../..".evaluate(state,computerPlayer,humanPlayer)
 	if result != null:
 		return score[result]
@@ -55,9 +55,12 @@ func minimax(state,depth,isMaximizing) -> int:
 			for y in range(3):
 				if state[x][y] == null:
 					state[x][y] = computerPlayer 
-					var score = minimax(state,depth+1, !isMaximizing)
+					var score = minimax(state,depth+1,alpha,beta, !isMaximizing)
 					state[x][y] = null
-					bestScore = max(bestScore,score)	
+					bestScore = max(bestScore,score)
+					alpha = max(bestScore, alpha)
+					if beta <= alpha:
+						break	
 		return bestScore	
 	else:
 		var bestScore = INF
@@ -65,9 +68,12 @@ func minimax(state,depth,isMaximizing) -> int:
 			for y in range(3):
 				if state[x][y] == null:
 					state[x][y] = humanPlayer
-					var score = minimax(state,depth+1, !isMaximizing)
+					var score = minimax(state,depth+1,alpha,beta, !isMaximizing)
 					state[x][y] = null
 					bestScore = min(bestScore,score)	
+					beta = min(bestScore, beta)
+					if beta <= alpha:
+						break	
 		return bestScore	
 
 func _on_player_on_move_made(_button):
