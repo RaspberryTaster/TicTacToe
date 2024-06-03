@@ -18,7 +18,7 @@ The Minimax algorithm is a decision-making algorithm, commonly used for playing 
 
 ### How It Works
 1. **Maximizing and Minimizing Players**: The algorithm treats the AI as the maximizing player and the human as the minimizing player.
-2. **Score Evaluation**: It recursively evaluates the game tree, scoring the end states with +10 for a win, -10 for a loss, and 0 for a draw.
+2. **Score Evaluation**: It recursively evaluates the game tree, scoring the end states with +1 for a win, -1 for a loss, and 0 for a draw.
 3. **Recursive Function**: The function returns the best possible score for the maximizing player and the worst possible score for the minimizing player.
 
 ## Installation and Usage
